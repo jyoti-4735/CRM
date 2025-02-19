@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Data Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">CRM Data Accuracy Dashboard</h1>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h2 class="text-center">Purchase Distribution</h2>
+                    <canvas id="purchaseChart"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h2 class="text-center">Review Ratings</h2>
+                    <canvas id="reviewChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h2 class="text-center">Anomaly Detection</h2>
+                    <img src="/static/anomaly_detection.png" alt="Anomaly Detection" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h2 class="text-center">Correlation Heatmap</h2>
+                    <img src="/static/correlation_heatmap.png" alt="Correlation Heatmap" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card p-3">
+                    <h2 class="text-center">Confusion Matrix</h2>
+                    <img src="/static/confusion_matrix.png" alt="Confusion Matrix" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const purchaseData = {
+            labels: ["Product A", "Product B", "Product C", "Product D"],
+            datasets: [{
+                label: "Purchases",
+                data: [400, 300, 200, 100],
+                backgroundColor: "rgba(75, 192, 192, 0.6)"
+            }]
+        };
+        new Chart(document.getElementById("purchaseChart"), { type: "bar", data: purchaseData });
+
+        const reviewData = {
+            labels: ["Positive", "Neutral", "Negative"],
+            datasets: [{
+                data: [70, 20, 10],
+                backgroundColor: ["#4CAF50", "#FF9800", "#F44336"]
+            }]
+        };
+        new Chart(document.getElementById("reviewChart"), { type: "pie", data: reviewData });
+    </script>
+</body>
+</html>
